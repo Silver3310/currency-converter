@@ -70,11 +70,16 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    # "currency_converter.users.apps.UsersConfig",
+    "currency_converter.currencies.apps.CurrenciesConfig",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+
+# ACTUAL CURRENCIES
+# ------------------------------------------------------------------------------
+ACTUAL_CURRENCIES = ['USD', 'EUR', 'CZK', 'PLN']
+EXCHANGE_API_SOURCE = 'https://api.exchangeratesapi.io/latest?base={base}&symbols={targets}'
 
 # MIGRATIONS
 # ------------------------------------------------------------------------------
@@ -93,7 +98,6 @@ AUTHENTICATION_BACKENDS = [
 # https://docs.djangoproject.com/en/dev/ref/settings/#password-hashers
 PASSWORD_HASHERS = [
     # https://docs.djangoproject.com/en/dev/topics/auth/passwords/#using-argon2-with-django
-    "django.contrib.auth.hashers.Argon2PasswordHasher",
     "django.contrib.auth.hashers.PBKDF2PasswordHasher",
     "django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher",
     "django.contrib.auth.hashers.BCryptSHA256PasswordHasher",
