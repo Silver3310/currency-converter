@@ -1,4 +1,5 @@
 from typing import Union
+from typing import Dict
 
 from django.db.models import CharField
 from django.db.models import FloatField
@@ -20,6 +21,14 @@ class Currency(Model):
         _("Abbreviation name of the currency"),
         max_length=3
     )
+
+    def show_exchange_rates(self) -> Dict[str, float]:
+        """Show the rates against this currency"""
+        exchange_rates = ExchangeRate.objects.filter(base=self)
+        return {
+            exchange_rate.target.abbr: round(exchange_rate.rate, 2)
+            for exchange_rate in exchange_rates
+        }
 
     def __str__(self) -> str:
         """Return the abbreviation name"""

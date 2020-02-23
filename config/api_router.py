@@ -14,7 +14,7 @@ api_view_routes = [
     path(
         'exchange/',
         ExchangeRateAPIView.as_view(),
-        name='api_exchange_rate'
+        name='exchange_rate'
     ),
 ]
 
