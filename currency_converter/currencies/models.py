@@ -1,3 +1,5 @@
+from typing import Union
+
 from django.db.models import CharField
 from django.db.models import FloatField
 from django.db.models import ForeignKey
@@ -53,6 +55,26 @@ class ExchangeRate(Model):
     rate = FloatField(
         _("Exchange rate value")
     )
+
+    @staticmethod
+    def convert_currencies(
+        base_str: str,
+        target_str: str,
+        value: float
+    ) -> Union[float, None]:
+        """
+        Convert the money of a given value from the base currency to
+        the target currency
+        """
+        try:
+            exchange_rate = ExchangeRate.objects.get(
+                base__abbr=base_str,
+                target__abbr=target_str,
+            )
+        except ExchangeRate.DoesNotExist:
+            return None
+        else:
+            return round(exchange_rate.rate * value, 2)
 
     def __str__(self) -> str:
         """Short info"""
