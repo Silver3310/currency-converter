@@ -21,6 +21,8 @@ For your convenience, the file cli.py is created, it contains shortcuts for comm
 
 * To run the project, run the following commands in terminal::
 
+    $ git clone https://github.com/Silver3310/currency-converter
+    $ cd currency-converter
     $ python3 -m venv venv
     $ source /venv/bin/activate
     $ pip install click
