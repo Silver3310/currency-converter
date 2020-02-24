@@ -1,3 +1,5 @@
+from typing import Optional
+
 import pytest
 
 from currency_converter.currencies.models import Currency
@@ -7,8 +9,9 @@ pytestmark = pytest.mark.django_db
 
 
 def test_currency_str():
-    currency: Currency = Currency.objects.first()
-    assert str(currency) == currency.abbr
+    currency: Optional[Currency] = Currency.objects.first()
+    if currency:
+        assert str(currency) == currency.abbr
 
 
 def test_show_exchange_rates():
@@ -33,12 +36,13 @@ def test_show_exchange_rates():
 
 
 def test_exchange_rate_str():
-    exchange_rate: ExchangeRate = ExchangeRate.objects.first()
-    assert str(exchange_rate) == '{0} - {1}: {2}'.format(
-        exchange_rate.base,
-        exchange_rate.target,
-        exchange_rate.rate
-    )
+    exchange_rate: Optional[ExchangeRate] = ExchangeRate.objects.first()
+    if exchange_rate:
+        assert str(exchange_rate) == '{0} - {1}: {2}'.format(
+            exchange_rate.base,
+            exchange_rate.target,
+            exchange_rate.rate
+        )
 
 
 def test_convert_currencies():

@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.views.generic import FormView
 from django.contrib import messages
 from django.conf import settings
+from django.forms import BaseForm
 
 from currency_converter.currencies.forms import ExchangeRateForm
 from currency_converter.currencies.models import Currency
@@ -21,7 +22,7 @@ class CurrencyHomeView(FormView):
     form_class = ExchangeRateForm
     success_url = reverse_lazy('currencies:home')
 
-    def form_valid(self, form: ExchangeRateForm):
+    def form_valid(self, form: BaseForm):
         base: Currency = form.cleaned_data.get('base')
         target: Currency = form.cleaned_data.get('target')
         value: float = form.cleaned_data.get('value')

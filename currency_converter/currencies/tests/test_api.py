@@ -1,3 +1,5 @@
+from typing import Optional
+
 import pytest
 from django.test import RequestFactory
 from rest_framework.response import Response
@@ -28,7 +30,7 @@ class TestExchangeRateAPIView:
         assert response.status_code == 200
         assert type(result) == dict
         assert result[base_str] == float(value)
-        expected_result: float = ExchangeRate.convert_currencies(
+        expected_result: Optional[float] = ExchangeRate.convert_currencies(
             base_str=base_str,
             target_str=target_str,
             value=float(value)

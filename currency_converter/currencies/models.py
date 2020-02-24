@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Optional
 from typing import Dict
 
 from django.db.models import CharField
@@ -70,7 +70,7 @@ class ExchangeRate(Model):
         base_str: str,
         target_str: str,
         value: float
-    ) -> Union[float, None]:
+    ) -> Optional[float]:
         """
         Convert the money of a given value from the base currency to
         the target currency and round it to 2
