@@ -24,6 +24,20 @@ def create_periodic_tasks(apps, schema_editor):
         description='Update exchange rates for the currencies every day at 12:30 pm UTC',
         start_time=datetime.now()
     )
+    # Add a period task to load values when initializing the project
+    IntervalSchedule = apps.get_model("django_celery_beat", "IntervalSchedule")
+    interval = IntervalSchedule.objects.using(db_alias).create(
+        every=1,
+        period='Seconds'
+    )
+    PeriodicTask.objects.using(db_alias).create(
+        name='Load exchange rates for the currencies',
+        task='currency_converter.currencies.tasks.update_exchange_rates',
+        description='Load exchange rates for the currencies',
+        start_time=datetime.now(),
+        interval=interval,
+        one_off=True  # perform it only once
+    )
 
 
 class Migration(migrations.Migration):
