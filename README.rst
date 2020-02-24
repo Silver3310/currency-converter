@@ -1,7 +1,7 @@
 Currency Converter
 ==================
 
-A project to calculate foreign exchange rates
+A RESTful service to calculate foreign exchange rates (UI is present as well)
 
 .. image:: https://img.shields.io/badge/built%20with-Cookiecutter%20Django-ff69b4.svg
      :target: https://github.com/pydanny/cookiecutter-django/
@@ -60,3 +60,15 @@ To access the admin panel you have to be a super user, you can create one by
 ::
 
   $ python cli.py createsuperuser
+
+Screenshots
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+User interface
+
+.. image:: https://sun4-16.userapi.com/5kvCfkkBy3pehmczejnr8TY6TjLv4Z0Y_x6epQ/IMgn4dPMxxE.jpg
+
+Rest Framework interface
+
+.. image:: https://sun4-15.userapi.com/4GdFMDfyYzlnGbOr-yZ8wVzFyA9iVZBOxmhv3A/baUpBs2ibyI.jpg
+
