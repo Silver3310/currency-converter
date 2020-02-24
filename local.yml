@@ -48,6 +48,7 @@ services:
   celerybeat:
     <<: *django
     image: currency_converter_local_celerybeat
+    restart: on-failure
     depends_on:
       - redis
       - postgres
