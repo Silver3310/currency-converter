@@ -13,7 +13,7 @@ from currency_converter.currencies.models import ExchangeRate
 def update_exchange_rates() -> None:
     """
     Update the current exchange rates of settings.ACTUAL_CURRENCIES using
-    the get_ex_rate_exchanger_source() function
+    the https://api.exchangeratesapi.io/ free service
     """
 
     base_str: str
