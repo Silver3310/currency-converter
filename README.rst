@@ -28,7 +28,7 @@ For your convenience, the file cli.py is created, it contains shortcuts for comm
     $ pip install click
     $ python cli.py runserver
 
-Now wait for the project to build and start
+Now wait for the project to build (for the first time, it may take up to 20-30 minutes) and start using it
 
 Type checks
 ^^^^^^^^^^^
