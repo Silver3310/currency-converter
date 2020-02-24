@@ -12,7 +12,7 @@ A RESTful service to calculate foreign exchange rates (UI is present as well)
 
 Prerequisites
 -------------
-For this project to run you have to make sure you have Docker and Docker-Compose installed
+For this project to run you have to make sure you have Python3.7 (or higher), Docker and Docker-Compose installed
 
 
 Basic Commands
@@ -24,7 +24,7 @@ For your convenience, the file cli.py is created, it contains shortcuts for comm
     $ git clone https://github.com/Silver3310/currency-converter
     $ cd currency-converter
     $ python3 -m venv venv
-    $ source /venv/bin/activate
+    $ source venv/bin/activate
     $ pip install click
     $ python cli.py runserver
 

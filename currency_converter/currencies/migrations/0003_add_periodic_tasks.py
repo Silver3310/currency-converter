@@ -28,7 +28,7 @@ def create_periodic_tasks(apps, schema_editor):
     IntervalSchedule = apps.get_model("django_celery_beat", "IntervalSchedule")
     interval = IntervalSchedule.objects.using(db_alias).create(
         every=1,
-        period='Seconds'
+        period='seconds'
     )
     PeriodicTask.objects.using(db_alias).create(
         name='Load exchange rates for the currencies',

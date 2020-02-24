@@ -39,7 +39,7 @@ def build():
 def test():
     """Test the project"""
     call(
-        'docker exec -ti currency_converter_django_1 bash -c'.split()
+        'docker exec -ti currency-converter_django_1 bash -c'.split()
         + [
             "source compose/production/django/entrypoint && py.test --create-db"
         ]
@@ -50,7 +50,7 @@ def test():
 def testpdb():
     """Test the project with debugging"""
     call(
-        'docker exec -ti currency_converter_django_1 bash -c'.split()
+        'docker exec -ti currency-converter_django_1 bash -c'.split()
         + [
             "source compose/production/django/entrypoint && py.test --create-db --pdb"
         ]
@@ -61,7 +61,7 @@ def testpdb():
 def mypy():
     """Test the project"""
     call(
-        'docker exec -ti currency_converter_django_1 bash -c'.split()
+        'docker exec -ti currency-converter_django_1 bash -c'.split()
         + [
             "source compose/production/django/entrypoint && "
             "mypy currency_converter"
@@ -73,7 +73,7 @@ def mypy():
 def sh():
     """Open the project's sh"""
     call(
-        'docker exec -ti currency_converter_django_1 bash -c'.split()
+        'docker exec -ti currency-converter_django_1 bash -c'.split()
         + [
             "source compose/production/django/entrypoint && "
             "sh"
@@ -85,7 +85,7 @@ def sh():
 def shp():
     """Open the project's shell_plus"""
     call(
-        'docker exec -ti currency_converter_django_1 bash -c'.split()
+        'docker exec -ti currency-converter_django_1 bash -c'.split()
         + [
             "source compose/production/django/entrypoint && "
             "python manage.py shell_plus"
@@ -97,7 +97,7 @@ def shp():
 def makemigrations():
     """Perform makemigrations for the project"""
     call(
-        'docker exec -ti currency_converter_django_1 bash -c'.split()
+        'docker exec -ti currency-converter_django_1 bash -c'.split()
         + [
             "source compose/production/django/entrypoint && "
             "python manage.py makemigrations"
@@ -109,7 +109,7 @@ def makemigrations():
 def migrate():
     """Perform migrate for the project"""
     call(
-        'docker exec -ti currency_converter_django_1 bash -c'.split()
+        'docker exec -ti currency-converter_django_1 bash -c'.split()
         + [
             "source compose/production/django/entrypoint && "
             "python manage.py migrate"
@@ -121,7 +121,7 @@ def migrate():
 def cov():
     """Test the project with coverage and html report"""
     call(
-        'docker exec -ti currency_converter_django_1 bash -c'.split()
+        'docker exec -ti currency-converter_django_1 bash -c'.split()
         + [
             "source compose/production/django/entrypoint && "
             "coverage run -m pytest && coverage html"
@@ -133,7 +133,7 @@ def cov():
 def createsuperuser():
     """Create a superuser for the project"""
     call(
-        'docker exec -ti currency_converter_django_1 bash -c'.split()
+        'docker exec -ti currency-converter_django_1 bash -c'.split()
         + [
             "source compose/production/django/entrypoint && "
             "python manage.py createsuperuser"
@@ -146,7 +146,7 @@ def createsuperuser():
 def dumpdata(model):
     """Dump data for application.model"""
     call(
-        'docker exec -ti currency_converter_django_1 bash -c'.split()
+        'docker exec -ti currency-converter_django_1 bash -c'.split()
         + [
             "source compose/production/django/entrypoint && "
             "python manage.py dumpdata {0} > {0}.json".format(model)
@@ -161,7 +161,7 @@ def rc():
     """Run an arbitrary command"""
     command = ' '.join(sys.argv[2:])
     call(
-        'docker exec -ti currency_converter_django_1 bash -c'.split()
+        'docker exec -ti currency-converter_django_1 bash -c'.split()
         + [f"source compose/production/django/entrypoint && {command}"]
     )
 
