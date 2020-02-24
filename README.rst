@@ -15,6 +15,18 @@ Prerequisites
 For this project to run you have to make sure you have Python3.7 (or higher), Docker and Docker-Compose installed
 
 
+Currencies
+----------
+Currencies and an API link to take exchange rates from are defined in the settings/base.py file
+
+::
+
+    >>> # ACTUAL CURRENCIES
+    ... # ------------------------------------------------------------------------------
+    ... ACTUAL_CURRENCIES = ['USD', 'EUR', 'CZK', 'PLN']
+    ... EXCHANGE_API_SOURCE = 'https://api.exchangeratesapi.io/latest'
+
+
 Basic Commands
 --------------
 For your convenience, the file cli.py is created, it contains shortcuts for common commands
