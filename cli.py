@@ -41,7 +41,18 @@ def test():
     call(
         'docker exec -ti currency_converter_django_1 bash -c'.split()
         + [
-            "source compose/production/django/entrypoint && pytest"
+            "source compose/production/django/entrypoint && py.test --create-db"
+        ]
+    )
+
+
+@click.command()
+def testpdb():
+    """Test the project with debugging"""
+    call(
+        'docker exec -ti currency_converter_django_1 bash -c'.split()
+        + [
+            "source compose/production/django/entrypoint && py.test --create-db --pdb"
         ]
     )
 
@@ -130,6 +141,19 @@ def createsuperuser():
     )
 
 
+@click.command()
+@click.argument('model')
+def dumpdata(model):
+    """Dump data for application.model"""
+    call(
+        'docker exec -ti currency_converter_django_1 bash -c'.split()
+        + [
+            "source compose/production/django/entrypoint && "
+            "python manage.py dumpdata {0} > {0}.json".format(model)
+        ]
+    )
+
+
 @click.command(context_settings=dict(
     allow_extra_args=True,
 ))
@@ -154,6 +178,8 @@ cli.add_command(makemigrations)
 cli.add_command(migrate)
 cli.add_command(rc)
 cli.add_command(createsuperuser)
+cli.add_command(dumpdata)
+cli.add_command(testpdb)
 
 
 if __name__ == '__main__':

@@ -1,5 +1,6 @@
 from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext_lazy as _
+from django.conf import settings
 
 from django.forms import Form
 from django.forms import ModelChoiceField
@@ -14,13 +15,13 @@ class ExchangeRateForm(Form):
     a value to convert
     """
     base = ModelChoiceField(
-        queryset=Currency.objects.all(),
+        queryset=Currency.objects.filter(abbr__in=settings.ACTUAL_CURRENCIES),
         initial=0,
         required=True,
         label=_('Base currency'),
     )
     target = ModelChoiceField(
-        queryset=Currency.objects.all(),
+        queryset=Currency.objects.filter(abbr__in=settings.ACTUAL_CURRENCIES),
         initial=1,
         required=True,
         label=_('Target currency')
