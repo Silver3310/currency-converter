@@ -1,8 +1,6 @@
 import pytest
 from django.test import RequestFactory
-
-from currency_converter.users.models import User
-from currency_converter.users.tests.factories import UserFactory
+from django.core.management import call_command
 
 
 @pytest.fixture(autouse=True)
@@ -11,10 +9,13 @@ def media_storage(settings, tmpdir):
 
 
 @pytest.fixture
-def user() -> User:
-    return UserFactory()
-
-
-@pytest.fixture
 def request_factory() -> RequestFactory:
     return RequestFactory()
+
+
+@pytest.fixture(scope='session')
+def django_db_setup(django_db_setup, django_db_blocker):
+    """Load fixtures to populate the test DB"""
+    with django_db_blocker.unblock():
+        call_command('loaddata', 'currencies.currency.json')
+        call_command('loaddata', 'currencies.exchangerate.json')

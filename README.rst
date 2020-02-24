@@ -51,3 +51,12 @@ Running tests with py.test
 ::
 
   $ python cli.py test
+
+
+Creating a super user
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To access the admin panel you have to be a super user, you can create one by
+::
+
+  $ python cli.py createsuperuser

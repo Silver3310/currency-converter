@@ -23,7 +23,7 @@ class Currency(Model):
     )
 
     def show_exchange_rates(self) -> Dict[str, float]:
-        """Show the rates against this currency"""
+        """Show the rates against this currency and round it to 2"""
         exchange_rates = ExchangeRate.objects.filter(base=self)
         return {
             exchange_rate.target.abbr: round(exchange_rate.rate, 2)
@@ -73,7 +73,7 @@ class ExchangeRate(Model):
     ) -> Union[float, None]:
         """
         Convert the money of a given value from the base currency to
-        the target currency
+        the target currency and round it to 2
         """
         try:
             exchange_rate = ExchangeRate.objects.get(

@@ -79,7 +79,7 @@ INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 # ACTUAL CURRENCIES
 # ------------------------------------------------------------------------------
 ACTUAL_CURRENCIES = ['USD', 'EUR', 'CZK', 'PLN']
-EXCHANGE_API_SOURCE = 'https://api.exchangeratesapi.io/latest?base={base}&symbols={targets}'
+EXCHANGE_API_SOURCE = 'https://api.exchangeratesapi.io/latest'
 
 # MIGRATIONS
 # ------------------------------------------------------------------------------
