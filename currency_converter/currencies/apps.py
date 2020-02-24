@@ -3,7 +3,7 @@ from django.utils.translation import gettext_lazy as _
 from django.db.models.signals import post_migrate
 
 
-def load_data_callback():
+def load_data_callback(sender, **kwargs):
     """
     Load data at the project startup
     """
