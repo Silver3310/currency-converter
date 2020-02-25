@@ -275,5 +275,6 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.TokenAuthentication",
     ),
 }
-# Your stuff...
+# messages
 # ------------------------------------------------------------------------------
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
